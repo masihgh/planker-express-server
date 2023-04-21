@@ -15,6 +15,7 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
+app.use('/', HomeRoute)
 app.use('*', function(req,res){
     res.status(404)
     res.send(
@@ -28,7 +29,7 @@ app.use('*', function(req,res){
 })
 
 
-app.use('/', HomeRoute)
+
 
 const start = async () => {
     try {
