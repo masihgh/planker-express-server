@@ -3,7 +3,8 @@ const express = require('express')
 const dotenv = require('dotenv')
 const cors = require('cors')
 const app = express()
-
+//Routes
+const HomeRoute = require('./routes/HomeRoute')
 
 //Configs
 dotenv.config()
@@ -16,9 +17,7 @@ app.use(express.urlencoded({extended: true}))
 
 
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.use('/', HomeRoute)
 
 const start = async () => {
     try {
