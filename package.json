@@ -1,4 +1,9 @@
 {
-  "name": "server-express",
+  "name": "planker",
+  "version": "1.0.0",
+  "description": "a simple and useful planner for personal planning!",
+  "author": "masihgh",
+  "main": "app.js",
+  "license": "MIT"
   "packageManager": "yarn@3.3.1"
 }
