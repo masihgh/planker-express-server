@@ -15,6 +15,17 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
+app.use('*', function(req,res){
+    res.status(404)
+    res.send(
+		{
+			statusCode:404,
+			error: 'Not Found',
+			message: "either the URL you have configured doesn't exist at all, or the resource you are trying to access doesn't exist.",
+			route:req.originalUrl
+		}
+	)
+})
 
 
 app.use('/', HomeRoute)
