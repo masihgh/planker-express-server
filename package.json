@@ -4,6 +4,6 @@
   "description": "a simple and useful planner for personal planning!",
   "author": "masihgh",
   "main": "app.js",
-  "license": "MIT"
+  "license": "MIT",
   "packageManager": "yarn@3.3.1"
 }
