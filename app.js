@@ -1,3 +1,4 @@
+const connectDB = require('./database/connect')
 const express = require('express')
 const dotenv = require('dotenv')
 const cors = require('cors')
@@ -6,7 +7,7 @@ const app = express()
 
 //Configs
 dotenv.config()
-const port = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000
 
 //Middlewares
 app.use(cors())
@@ -19,6 +20,14 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+const start = async () => {
+    try {
+        await connectDB(process.env.MONGO_URI)
+        app.listen(PORT , () => console.log(`server is running on port ${PORT}`))
+    } catch (error) {
+        console.log(error);
+		process.exit(1);
+    }
+}
+
+start()
