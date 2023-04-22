@@ -31,7 +31,7 @@ const register = async (req, res) => {
 }
 
 const login = async (req, res) => {
-  let user = await User.findOne({ email: req.body.email });
+  let user = await User.findOne({ email: req.body.email }).exclude("password");
   if (user) {
     const match = await bcrypt.compare(req.body.password, user.password);
     if (match) {
