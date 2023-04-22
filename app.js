@@ -6,6 +6,7 @@ const app = express()
 
 //Routes
 const HomeRoute = require('./routes/HomeRoute')
+const AuthRoute = require('./routes/AuthRoute')
 
 //Configs
 dotenv.config()
@@ -18,6 +19,7 @@ app.use(express.urlencoded({extended: true}))
 
 //Routes
 app.use('/', HomeRoute)
+app.use('/auth', AuthRoute)
 app.use('*', function(req,res){
     res.status(404)
     res.send(
