@@ -31,13 +31,14 @@ const register = async (req, res) => {
 }
 
 const login = async (req, res) => {
-  let user = await User.findOne({ email: req.body.email }).exclude("password");
+  let user = await User.findOne({ email: req.body.email });
   if (user) {
     const match = await bcrypt.compare(req.body.password, user.password);
     if (match) {
+      const {password, ...other} = user._doc
       return res.status(200).json({
         statusCode: 200,
-        user: user,
+        user: other,
         token: jwt.sign({ email: req.body.email }, process.env.TOKEN_SECRET, { expiresIn: process.env.TOKEN_EXPIRE }),
         message: "User Logged In successfuly!",
       })
