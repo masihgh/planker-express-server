@@ -1,4 +1,4 @@
-# server-express
+# Planker - Personal Planner
 
 ## authentication
 ### > login
