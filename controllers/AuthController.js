@@ -8,7 +8,7 @@ const register = async (req, res) => {
     return res.status(400).json({
       statusCode: 400,
       error: 'User Has Registerd',
-      message: "a user has already registerd with this email.",
+      message: ["a user has already registerd with this email."],
     })
   } else {
     const salt = bcrypt.genSaltSync(Number(process.env.SALT_ROUNDS));
@@ -24,7 +24,7 @@ const register = async (req, res) => {
     return res.status(200).json({
       statusCode: 200,
       user: newUser,
-      message: "User created successfuly!",
+      message: ["User created successfuly!"],
     })
   }
 
@@ -40,20 +40,20 @@ const login = async (req, res) => {
         statusCode: 200,
         user: other,
         token: jwt.sign({ email: req.body.email }, process.env.TOKEN_SECRET, { expiresIn: process.env.TOKEN_EXPIRE }),
-        message: "User Logged In successfuly!",
+        message: ["User Logged In successfuly!"],
       })
     } else {
       return res.status(401).json({
         statusCode: 401,
         error: 'Authentication Faild',
-        message: "Username Or Password is wrong.",
+        message: ["Username Or Password is wrong."],
       })
     }
   } else {
     return res.status(401).json({
       statusCode: 401,
       error: 'Authentication Faild',
-      message: "Username Or Password is wrong.",
+      message: ["Username Or Password is wrong."],
     })
   }
 

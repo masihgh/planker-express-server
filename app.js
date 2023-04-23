@@ -26,7 +26,7 @@ app.use('*', function(req,res){
 		{
 			statusCode:404,
 			error: 'Not Found',
-			message: "either the URL you have configured doesn't exist at all, or the resource you are trying to access doesn't exist.",
+			message: ["either the URL you have configured doesn't exist at all, or the resource you are trying to access doesn't exist."],
 			route:req.originalUrl
 		}
 	)
